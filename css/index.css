@@ -1,0 +1,73 @@
+body, div, a, input {
+	margin: 0;
+	padding: 0;
+}
+body {
+	position:absolute;
+	min-height: 100%;
+	min-width: 100%;
+}
+.url-text {
+	/*border: 1px solid black;*/
+	height: 38px;
+	opacity: 0; 
+	width: 114px;
+	position: absolute;
+	left: 0px;
+	top: 0;
+}
+.qr {
+	text-align: center;
+	/*border: 1px solid black;*/
+}
+
+.url-input {
+/*border: 1px solid black;*/
+	width: 400px;
+	margin-left: 0px;
+	margin-top: 10px; 
+	font-size: 16px;
+	height: 16px;
+	max-width:100%;
+	text-align:center;
+}
+
+.tag {
+	width: 100px;
+	height: 16px;
+	/*border: 1px solid black;*/
+	display: inline-block;
+	font-size: 16px;
+}
+#make {
+	margin-top: 10px;
+}
+#code {
+	display: none;
+}
+#adjustColor {
+	display: none;
+}
+#endImg {
+	display:none;
+	width: 450px;
+	max-width:100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#downImg {
+	display:none;
+	margin-bottom: 20px;
+}
+#footer {
+            height: 40px;
+            position:absolute;
+            line-height: 40px;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            background: #999;
+            color: #fff;
+            font-family: Arial;
+            font-size: 12px;
+        }

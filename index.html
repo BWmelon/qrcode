@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<!-- 百度统计 -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e3fd2b8e813e2dd0ad7a24468fe468d4";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+	<meta charset="UTF-8">
+	<title>大西瓜三合一收款码</title>
+	<meta name="keywords" content="收款码合并,收款码三合一免费合并,在线合成,合成,免费合成,收款码" />
+    <meta name="description" content="qq微信支付宝收款码在线免费合并三合一" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="bookmark"href="favicon.ico" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1008660_5a0q6yr5ru.css">
+</head>
+<body>
+		<ul class="layui-nav layui-bg-green">
+			<li class="layui-nav-item"><a href="https://www.bwmelon.com/"><i class="iconfont icon-bokeblogger3"></i>博客</a></li>
+			<li class="layui-nav-item"><a href="https://github.com/BWmelon/qrcode"><i class="iconfont icon-GitHub"></i>Github</a></li>
+			<li class="layui-nav-item">
+				<a href="javascript:;"><i class="iconfont icon-lianjie"></i>Links</a>
+	    		<dl class="layui-nav-child"> <!-- 二级菜单 -->
+	      		<dd><a href="https://qr.52ecy.cn/">收款啦</a></dd>
+	      		<dd><a href="https://qrpay.uomg.com/">优启梦收款</a></dd>
+	      		<dd><a href="https://www.layui.com/">Layui</a></dd>
+	      		<dd><a href="https://www.iconfont.cn/">Iconfont</a></dd>
+	    		</dl>
+			</li>
+	  		<li class="layui-nav-item"><a href="https://jq.qq.com/?_wv=1027&k=58OjqS7" target="_blank"><i class="iconfont icon-qunliao"></i>有问题点我</a></lsi>
+		</ul>
+
+	<div class="qr">
+		<div>
+			<div class="tag">收款名</div>
+			<input type="text" placeholder="请输入收款人名称(建议2~4个字)" autocomplete="off" class="layui-input-block url-input" id="recName"><br>
+			<div class="tag">QQ</div>
+			<input type="text" placeholder="请点按钮上传QQ收款码或者手动输入收款码链接" autocomplete="off" class="layui-input-block url-input" id="qq">
+			<button type="button" class="layui-btn" style="position: relative;">
+				<input type="file" id="qqBtn"  class="url-text"/>
+					<i class="layui-icon">&#xe67c;</i>上传图片
+			</button>
+		</div>
+		<div>
+			<div class="tag">微信</div>
+			<input type="text" placeholder="请点按钮上传微信收款码或者手动输入收款码链接" autocomplete="off" class="layui-input-block url-input" id="wechat">
+			<button type="button" class="layui-btn" style="position: relative;">
+				<input type="file" id="wechatBtn"  class="url-text"/>
+					<i class="layui-icon">&#xe67c;</i>上传图片
+			</button>
+		</div>
+		<div>
+			<div class="tag">支付宝</div>
+			<input type="text" placeholder="请点按钮上传支付宝收款码或者手动输入收款码链接" autocomplete="off" class="layui-input-block url-input" id="ali">
+			<button type="button" class="layui-btn" style="position: relative;">
+				<input type="file" id="aliBtn" class="url-text"/>
+					<i class="layui-icon">&#xe67c;</i>上传图片
+			</button><br>
+		<div class="layui-btn layui-btn-normal" id="make" >立即合成</div><br>
+		<div id="code"></div>
+		<canvas id="canvas" width="900" height="1220" style="width: 450px; height: 610px; display:none;"></canvas>
+	</div>
+	<div id="adjustColor">
+		<br>
+		<div>
+			<div class="tag">主体颜色</div>
+			<div id="topColorBtn"></div>
+			<div class="tag">底部颜色</div>
+			<div id="bottomColorBtn"></div>
+		</div>
+		<div>
+			<div class="tag">收款文字颜色</div>
+			<div id="recTextColorBtn"></div>
+			<div class="tag">底部文字颜色</div>
+			<div id="bottomTextColorBtn"></div>
+		</div>
+		<br>
+	</div>
+
+	<img src="" alt="" id="endImg" />
+	<br>
+	<button class="layui-btn layui-btn-normal layui-btn-radius" id="downImg">图片保存不了？点我试试</button>
+	<br>
+	<div id="footer">CopyRight © 2019 <a href="https://www.bwmelon.com" target="_blank">大西瓜博客</a></div>
+	<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/llqrcode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/analyticCode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.qrcode.min.js"></script>
+	<script src="./layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
+
+</body>
+</html>
