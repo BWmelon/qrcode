@@ -250,7 +250,7 @@ $(function () {
                 	// 生成缩网址二维码
                 	// console.log('http://suo.im/api.php?format=jsonp&url=' + urlEncode(longUrl));
 						if (res.url) {
-							// console.log(res.url);
+							// console.log("短网址"+res.url);
 							layer.closeAll();
 							//jQuery生成二维码         
 					       	$('#code').qrcode({
@@ -273,16 +273,15 @@ $(function () {
 					         	render:"canvas", 
 					         	width:550, 
 					         	height:550, 
-					         	text:res.url, 
+					         	text:longUrl, 
 					         	foreground:"black", 
 					         	background:"white"
 							});
 					       	makeBg();
 							// 显示颜色修改区域
 							$("#adjustColor").show();
-							
-				         	layer.msg('收款码生成成功，请长按或右击保存', {time: 3000, icon:6});
-							layer.msg('收款码生成成功，但是二维码简化失败，原因是' + res.err + '，请长按或右击保存', {time: 5000, icon:5});
+							// console.log("短网址"+res.err);
+							layer.msg('收款码生成成功，但是二维码简化失败，原因是：' + res.err + '，请长按或右击保存', {time: 5000, icon:5});
 						}
 				
 					
