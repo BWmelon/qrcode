@@ -197,7 +197,7 @@ $(function () {
 				function(url){
 					if (url == 'error decoding QR Code') {
 						layer.msg('二维码解析失败，请重新上传', {time: 3000, icon:5});
-					}else if(url.indexOf('ALIPAY' || 'alipay') == '-1') {
+					}else if(url.indexOf('ALIPAY') == '-1' && url.indexOf('alipay') == '-1') {
 						layer.msg('该收款码不是支付宝收款码，请上传支付宝收款码', {time: 3000, icon:5});
 					}else {
 						layer.msg('上传成功', {time: 3000, icon:6});
@@ -231,60 +231,40 @@ $(function () {
 		$("#code").empty();
 		
 		// 原长链接
-        var longUrl = "http://" + window.location.host + window.location.pathname + "allqr.html?qqUrl=" + urlEncode($("#qq").val()) + "&wechatUrl=" + urlEncode($("#wechat").val()) + "&aliUrl=" + urlEncode($("#ali").val()); 
-       	
+        var longUrl = document.location.protocol + "//" + window.location.host + window.location.pathname + "allqr.html?qqUrl=" + urlEncode($("#qq").val()) + "&wechatUrl=" + urlEncode($("#wechat").val()) + "&aliUrl=" + urlEncode($("#ali").val()); 
      	// console.log(longUrl);
+     	
      	layer.msg('生成中', {
 			icon: 16,
 			shade: 0.01,
 			time: 10*1000
 		});
 
-		//由于原来生成的链接太长，生成的二维码太密集，所以通过http://suo.im/生成短网址
+		//由于原来生成的链接太长，生成的二维码太密集，所以通过新浪短网址(https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)生成短网址
 		$.ajax(
           	{
                 type:'get',
-                url:'http://suo.im/api.php?format=jsonp&url=' + urlEncode(longUrl),
+                url:'//api.weibo.com/2/short_url/shorten.json?source=2849184197&url_long=' + urlEncode(longUrl),
                 dataType: "JSONP",
                 success: function(res) {
                 	// 生成缩网址二维码
-                	// console.log('http://suo.im/api.php?format=jsonp&url=' + urlEncode(longUrl));
-						if (res.url) {
-							// console.log("短网址"+res.url);
-							layer.closeAll();
-							//jQuery生成二维码         
-					       	$('#code').qrcode({
-					         	render:"canvas", 
-					         	width:550, 
-					         	height:550, 
-					         	text:res.url, 
-					         	foreground:"black", 
-					         	background:"white"
-							});
-					       	makeBg();
-							// 显示颜色修改区域
-							$("#adjustColor").show();
-							
-				         	layer.msg('收款码生成成功，请长按或右击保存', {time: 3000, icon:6});
-						} else {
-							layer.closeAll();
-							//jQuery生成二维码         
-					       	$('#code').qrcode({
-					         	render:"canvas", 
-					         	width:550, 
-					         	height:550, 
-					         	text:longUrl, 
-					         	foreground:"black", 
-					         	background:"white"
-							});
-					       	makeBg();
-							// 显示颜色修改区域
-							$("#adjustColor").show();
-							// console.log("短网址"+res.err);
-							layer.msg('收款码生成成功，但是二维码简化失败，原因是：' + res.err + '，请长按或右击保存', {time: 5000, icon:5});
-						}
-				
-					
+                	// console.log('//api.weibo.com/2/short_url/shorten.json?source=2849184197&url_long=1' + urlEncode(longUrl));
+						// console.log("短网址:"+ res.data.urls[0].url_short);
+						layer.closeAll();
+						//jQuery生成二维码         
+				       	$('#code').qrcode({
+				         	render:"canvas", 
+				         	width:550, 
+				         	height:550, 
+				         	text:res.data.urls[0].url_short, 
+				         	foreground:"black", 
+				         	background:"white"
+						});
+				       	makeBg();
+						// 显示颜色修改区域
+						$("#adjustColor").show();
+			         	layer.msg('收款码生成成功，请长按或右击保存', {time: 3000, icon:6});
+
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 			            if(jqXHR.statusText == "error") {
@@ -301,8 +281,8 @@ $(function () {
 					       	makeBg();
 							// 显示颜色修改区域
 							$("#adjustColor").show();
-							
-				         	layer.msg('收款码生成成功，但是二维码简化失败，可能是suo.im的服务器又被同行干了，请长按或右击保存', {time: 5000, icon:5});
+							console.log(textStatus);
+				         	layer.msg('收款码生成成功，但是二维码简化失败，请长按或右击保存', {time: 5000, icon:5});
 			            	
 			            }
 			            
