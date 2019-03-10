@@ -1,47 +1,4 @@
-body, div, a, input {
-	margin: 0;
-	padding: 0;
-}
-body {
-	position:absolute;
-	min-height: 100%;
-	min-width: 100%;
-}
-.url-text {
-	/*border: 1px solid black;*/
-	height: 38px;
-	opacity: 0; 
-	width: 114px;
-	position: absolute;
-	left: 0px;
-	top: 0;
-}
-.qr {
-	text-align: center;
-	/*border: 1px solid black;*/
-}
-
-.url-input {
-/*border: 1px solid black;*/
-	width: 400px;
-	margin-left: 0px;
-	margin-top: 10px; 
-	font-size: 16px;
-	height: 16px;
-	max-width:100%;
-	text-align:center;
-}
-
-.tag {
-	width: 100px;
-	height: 16px;
-	/*border: 1px solid black;*/
-	display: inline-block;
-	font-size: 16px;
-}
-#make {
-	margin-top: 10px;
-}
+/*第一次用bootstrap，很多元素不知道怎么修改颜色，无奈只能覆盖之前的类*/
 #code {
 	display: none;
 }
@@ -50,24 +7,70 @@ body {
 }
 #endImg {
 	display:none;
-	width: 450px;
-	max-width:100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 #downImg {
 	display:none;
-	margin-bottom: 20px;
 }
-#footer {
-            height: 40px;
-            position:absolute;
-            line-height: 40px;
-            bottom: -40px;
-            width: 100%;
-            text-align: center;
-            background: #999;
-            color: #fff;
-            font-family: Arial;
-            font-size: 12px;
-        }
+.mainColor {
+	background-color: rgba(100,149,237,0.8);
+}
+
+.navbar {
+	border: 0;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-toggle {
+     border-color: transparent; 
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #83aaf1;
+}
+.btn-primary {
+	background-color: #83aaf1;
+	border-color: #83aaf1;
+}
+.btn-primary:hover, .btn-primary:active {
+	background-color: #83aaf1;
+	border-color: #83aaf1;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: #83aaf1;
+}
+p {
+	color: #fff;
+	margin-top: 6px;
+	margin-bottom: 9px;
+}
+.link {
+	color: #00fa9a;
+}
+.link:hover {
+	text-decoration: none;
+}
+@media (max-width: 767px) {
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    	color: #ffffff;
+	}
+	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a, .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
+    color: #fff;
+    background-color: #83aaf1;
+	}
+}
+.afterMakeNav {
+	width: 100%;
+    display: inline-block;
+}
+.layui-colorpicker.layui-colorpicker-lg {
+	line-height: 22px;
+}

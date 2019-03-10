@@ -2,17 +2,16 @@ console.log("%c", "padding:50px 300px;line-height:120px;background:url('http://5
 console.log("%c%c博客名称%c大西瓜博客","line-height:28px;","line-height:28px;padding:4px;background:#222;color:#fff;font-size:16px;margin-right:15px","color:#3fa9f5;line-height:28px;font-size:16px;"); 
 console.log("%c%c网站地址%chttps://www.bwmelon.com","line-height:28px;","line-height:28px;padding:4px;background:#222;color:#fff;font-size:16px;margin-right:15px","color:#ff9900;line-height:28px;font-size:16px;"); 
 console.log("%c%cBUG反馈群：%c789371353(遇到问题尽量自己解决，因为我也不一定会*(￣▽￣)~*)","line-height:28px;","line-height:28px;padding:4px;background:#222;color:#fff;font-size:16px;margin-right:15px","color:#008000;line-height:28px;font-size:16px;"); 
-console.log("%c%c刚看完html教程的新手，不喜勿喷（手动滑稽）","line-height:28px;","line-height:28px;padding:4px 0px;font-color:#fff;font-size:16px;background-image:-webkit-gradient(linear,left top,right top,color-stop(0,#ff22ff),color-stop(1,#5500ff));color:transparent;-webkit-background-clip:text;");
+
 layui.use(['element', 'layer', 'colorpicker'], function(){
  	var element = layui.element;
  	var layer = layui.layer;
  	var colorpicker = layui.colorpicker;
-
+ 	
  	// 扫码领红包广告,不需要则删除该段代码
 	layer.open({
 	  type: 1,
-	  skin: 'layui-layer-rim', //加上边框
-	  area: ['400px', '500px'], //宽高
+	  area: ['300px', '480px'], //宽高
 	  content: '<div style="text-align: center;"><br>"打开支付宝搜索531010305 领取现金红包"<br>"扫码下方二维码进行现金打赏"<br><img src="//wx3.sinaimg.cn/mw690/005toDc8gy1fxc2k6plzoj307i07imz8.jpg"><br>"本站生成的收款码无红包广告"<br>"永久免费生成"</div>',
 	  title: '支付宝扫码领红包',
 	  btn:['关闭'],
@@ -103,6 +102,7 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
 		 color:'#5a91eb',
 		 predefine: true,
 		 colors: ['#5a91eb','#F00','#0F0','#00F','rgb(255, 69, 0)'],
+		 size:'lg',
 		change: function(color){
 					topColor = color;
 					makeBg(topColor,bottomColor,recTextColor,bottomTextColor);
@@ -114,6 +114,7 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
 		color: '#ffffff',
 		predefine: true,
 		colors: ['#ffffff','#F00','#0F0','#00F','rgb(255, 69, 0)'],
+		size:'lg',
 		change: function(color){
 					bottomColor = color;
 					makeBg(topColor,bottomColor,recTextColor,bottomTextColor);
@@ -125,6 +126,7 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
 		color: '#ffffff',
 		predefine: true,
 		colors: ['#ffffff','#F00','#0F0','#00F','rgb(255, 69, 0)'],
+		size:'lg',
 		change: function(color){
 					recTextColor = color;
 					makeBg(topColor,bottomColor,recTextColor,bottomTextColor);
@@ -136,6 +138,7 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
 		color: '#5a91eb',
 		predefine: true,
 		colors: ['#5a91eb','#F00','#0F0','#00F','rgb(255, 69, 0)'],
+		size:'lg',
 		change: function(color){
 					bottomTextColor = color;
 					makeBg(topColor,bottomColor,recTextColor,bottomTextColor);
@@ -214,7 +217,6 @@ $(function () {
 	    return encodeURIComponent(String).replace(/'/g,"%27").replace(/"/g,"%22");
 	}
 
-
 	// 上传二维码并解析
 	$("#qqBtn").on('change', function() {
 		getUrl_qq(this,'file-url');
@@ -226,7 +228,12 @@ $(function () {
 		getUrl_ali(this,'file-url');
 	})
 
+
+
+
+
 	$("#make").click(function () {
+		
 		// 重置canvas里面的二维码
 		$("#code").empty();
 		
@@ -261,9 +268,14 @@ $(function () {
 				         	background:"white"
 						});
 				       	makeBg();
+
 						// 显示颜色修改区域
 						$("#adjustColor").show();
-			         	layer.msg('收款码生成成功，请长按或右击保存', {time: 3000, icon:6});
+						// 取消底部导航栏固定
+						$("footer").removeClass(" navbar-fixed-bottom");
+						// 修改底部导航栏样式
+						$("footer").addClass("afterMakeNav");
+			         	layer.msg('收款码生成成功，请长按或右击保存', {time: 2500, icon:6});
 
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
@@ -281,7 +293,6 @@ $(function () {
 					       	makeBg();
 							// 显示颜色修改区域
 							$("#adjustColor").show();
-							console.log(textStatus);
 				         	layer.msg('收款码生成成功，但是二维码简化失败，请长按或右击保存', {time: 5000, icon:5});
 			            	
 			            }
