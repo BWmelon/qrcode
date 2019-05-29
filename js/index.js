@@ -240,7 +240,7 @@ $(function () {
 					image.src = canvas.toDataURL("image/png");
 					$(".form-horizontal img").attr("src",image.src);
 					$("canvas").hide();
-					$("#endImg").show("slow");
+					$("#endImg").show();
 					// 显示下载按钮
 					$("#downImg").show();
 					// 显示颜色修改区域
@@ -251,11 +251,13 @@ $(function () {
 		}).then(() => {
 			// 判断是否重复生成
 			if (!isrepeated) {
-				// 取消底部导航栏固定
-				$("footer").removeClass(" navbar-fixed-bottom");
-				// 修改底部导航栏样式
-				$("footer").addClass("afterMakeNav");
-				isrepeated = true;
+				if($(document.body).height() > $(window).height()) {
+					// 取消底部导航栏固定
+					$("footer").removeClass(" navbar-fixed-bottom");
+					// 修改底部导航栏样式
+					$("footer").addClass("afterMakeNav");
+					isrepeated = true;
+				}
 			}
 		})
 		
