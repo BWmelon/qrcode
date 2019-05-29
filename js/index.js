@@ -11,8 +11,8 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
  	// 扫码领红包广告,不需要则删除该段代码
 	layer.open({
 	  type: 1,
-	  area: ['300px', '480px'], //宽高
-	  content: '<div style="text-align: center;"><br>"打开支付宝搜索531010305 领取现金红包"<br>"扫码下方二维码进行现金打赏"<br><img src="//wx3.sinaimg.cn/mw690/005toDc8gy1fxc2k6plzoj307i07imz8.jpg"><br>"本站生成的收款码无红包广告"<br>"永久免费生成"</div>',
+	  area: ['310px', '450px'], //宽高
+	  content: '<div style="text-align: center;"><br><img src="https://imgs.bwmelon.com/20190516143115.png" style="width:80%;margin-bottom:15px;"><br>"扫码二维码查看支付效果或者打赏"<br>"本站生成的收款码无红包广告"<br>"又拍云CDN加速，收款更快捷"</div>',
 	  title: '支付宝扫码领红包',
 	  btn:['关闭'],
 	  btnAlign: 'c',
@@ -68,29 +68,44 @@ layui.use(['element', 'layer', 'colorpicker'], function(){
 		var ctx = canvas.getContext('2d');
 		var canvasOld= document.getElementsByTagName('canvas')[0];
 		ctx.drawImage(canvasOld,166,224);
-		// 三个图标
-		var imgWechat = new Image();
-		imgWechat.src="imgs/wechat.png";
-		imgWechat.onload = function () {
-			ctx.drawImage(imgWechat,170,872,123,123);
-		}
-		var imgAlipay = new Image();
-		imgAlipay.src="imgs/alipay.png";
-		imgAlipay.onload = function () {
-			ctx.drawImage(imgAlipay,390,872,123,123);
-		}
-		var imgQQ = new Image();
-		imgQQ.src="imgs/QQ.png";
-		imgQQ.onload = function () {
-			ctx.drawImage(imgQQ,611,872,123,123);
-			//canvas转成图片，以便移动端长按保存
-			var image = new Image();
-			image.src = canvas.toDataURL("image/png");
-			$("img").attr("src",image.src);
-			$("canvas").hide();
-			$("#endImg").show();
-			$("#downImg").show();
-		}
+		
+		
+		// 生成三个图标
+		var icons = new Promise((resolve, reject) => {
+			var imgWechat = new Image();
+			imgWechat.src="imgs/wechat.png";
+			imgWechat.onload = function () {
+				ctx.drawImage(imgWechat,170,872,123,123);
+				resolve();
+			}
+		}).then(() => {
+			var imgAlipay = new Image();
+			imgAlipay.src="imgs/alipay.png";
+				imgAlipay.onload = function () {
+				ctx.drawImage(imgAlipay,390,872,123,123);
+				resolve();
+			}
+		}).then(() => {
+			var imgQQ = new Image();
+			imgQQ.src="imgs/QQ.png";
+			imgQQ.onload = function () {
+				ctx.drawImage(imgQQ,611,872,123,123);
+				//canvas转成图片，以便移动端长按保存
+				var image = new Image();
+				image.src = canvas.toDataURL("image/png");
+				$(".form-horizontal img").attr("src",image.src);
+				$("canvas").hide();
+				$("#endImg").show();
+				$("#downImg").show();
+			}
+		})
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
