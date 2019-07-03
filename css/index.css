@@ -1,96 +1,126 @@
-/*第一次用bootstrap，很多元素不知道怎么修改颜色，无奈只能覆盖之前的类*/
-#code {
+#code, #canvas, #adjustColor, #endImg, #downImg {
 	display: none;
 }
-#adjustColor {
-	display: none;
-}
-#endImg {
-	display:none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-#downImg {
-	display:none;
+
+#canvas {
+	width: 10px;
+	height: 100px;
 }
 .mainColor {
-	background-color: rgba(100,149,237,0.8);
+	background-color: rgba(100, 149, 237, 0.8);
 }
 
 .navbar {
 	border: 0;
 }
-.navbar-inverse .navbar-nav > li > a {
-  color: #ffffff;
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #ffffff;
 }
+
 .navbar-inverse .navbar-brand {
-    color: #ffffff;
+	color: #ffffff;
 }
+
 .navbar-inverse .navbar-toggle {
-     border-color: transparent; 
+	border-color: transparent;
 }
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #fff;
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+	border-color: #fff;
 }
-.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: #83aaf1;
+
+.navbar-inverse .navbar-toggle:focus,
+.navbar-inverse .navbar-toggle:hover {
+	background-color: #83aaf1;
 }
+
 .btn-primary {
 	background-color: #83aaf1;
 	border-color: #83aaf1;
 }
-.btn-primary:hover, .btn-primary:active {
+
+.btn-primary:hover,
+.btn-primary:active {
 	background-color: #83aaf1;
 	border-color: #83aaf1;
 }
-.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
-    color: #fff;
-    background-color: #83aaf1;
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:focus,
+.navbar-inverse .navbar-nav>.open>a:hover {
+	color: #fff;
+	background-color: #83aaf1;
 }
+
 p {
 	color: #fff;
 	margin-top: 6px;
 	margin-bottom: 9px;
 }
+
 .link {
 	color: #00fa9a;
 }
+
 .link:hover {
 	text-decoration: none;
 }
+
 @media (max-width: 767px) {
 	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    	color: #ffffff;
+		color: #ffffff;
 	}
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a, .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
-    color: #fff;
-    background-color: #83aaf1;
+
+	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a,
+	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus,
+	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
+		color: #fff;
+		background-color: #83aaf1;
 	}
 }
+
 .afterMakeNav {
 	width: 100%;
-    display: inline-block;
+	display: inline-block;
 }
+
 .layui-colorpicker.layui-colorpicker-lg {
 	line-height: 22px;
 }
+
 .footer a {
-  	color: #fff;
+	color: #fff;
 }
+
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 6px;
+	width: 8px;
+	height: 6px;
 }
-  
+
 ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: #cbcbcb;
+	border-radius: 4px;
+	background-color: #cbcbcb;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #bbbbbb;
+	background-color: #bbbbbb;
 }
-  
+
 ::-webkit-scrollbar-track-piece {
-    background: #eee;
+	background: #eee;
+}
+
+.swiper-container {
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+.swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 300px;
+	height: 400px;
 }
