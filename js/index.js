@@ -348,7 +348,7 @@ $(function () {
 			$("#code").empty();
 
 			// 原未缩短长链接
-			var longUrl = document.location.protocol + "//" + window.location.host + window.location.pathname + "allqr.html?qqUrl=" + urlEncode($("#qq").val()) + "&wechatUrl=" + urlEncode($("#wechat").val()) + "&aliUrl=" + urlEncode($("#ali").val()) + "&qq=" + urlEncode($("#qqlogo").val()) + "&recname=" + encodeURI(encodeURI($("#recName").val());
+			var longUrl = document.location.protocol + "//" + window.location.host + window.location.pathname + "allqr.html?qqUrl=" + urlEncode($("#qq").val()) + "&wechatUrl=" + urlEncode($("#wechat").val()) + "&aliUrl=" + urlEncode($("#ali").val()) + "&qq=" + urlEncode($("#qqlogo").val()) + "&recname=" + encodeURI(encodeURI($("#recName").val()));
 
 			// 开始生成弹出层
 			layer.msg('生成中', {
