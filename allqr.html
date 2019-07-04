@@ -86,7 +86,7 @@
 
     // 获取qq号并生成头像，为空则显示默认头像
     qq = GetQueryString("qq");
-    qq = "https://q1.qlogo.cn/g?b=qq&nk=" + qq + "&s=100"
+    qq = qq == ''? "https://q1.qlogo.cn/g?b=qq&nk=1&s=100" : "https://q1.qlogo.cn/g?b=qq&nk=" + qq + "&s=100"
 
     // 获取收款名称，为空则显示默认“扫码付款”
     recname = GetQueryString("recname");
