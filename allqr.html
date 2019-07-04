@@ -86,11 +86,11 @@
 
     // 获取qq号并生成头像，为空则显示默认头像
     qq = GetQueryString("qq");
-    qq = qq == ''? "https://q1.qlogo.cn/g?b=qq&nk=1&s=100" : "https://q1.qlogo.cn/g?b=qq&nk=" + qq + "&s=100"
+    qq = qq == ''? "https://q1.qlogo.cn/g?b=qq&nk=1&s=100" : "https://q1.qlogo.cn/g?b=qq&nk=" + qq + "&s=100";
 
     // 获取收款名称，为空则显示默认“扫码付款”
     recname = GetQueryString("recname");
-    recname = recname || "扫码付款";
+    recname = decodeURI(recname) || "扫码付款";
 
     // 用于动态生成二维码的API，不需要修改。
     qrcodeApi = "http://api.k780.com:88/?app=qr.get&level=L&size=6&data="
