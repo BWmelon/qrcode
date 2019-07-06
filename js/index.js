@@ -301,7 +301,7 @@ $(function () {
 		}
 
 		// 生成收款码（其他样式 背景图已指定）
-		function makeDiyBg(element, qrWidth, qrHeight, url, foreground, background, imgUrl, imgWidth, imgHeight, font, fontColor, recName, recNameLeft = imgWidth / 2, recNameTop, qrLeft, qrTop) {
+		function makeDiyBg(element, qrWidth, qrHeight, url, foreground, background, imgUrl, imgWidth, imgHeight, font, fontColor, recName, recNameLeft, recNameTop, qrLeft, qrTop) {
 			$(element).qrcode({
 				render: "canvas",
 				width: qrWidth,
@@ -326,7 +326,10 @@ $(function () {
 				ctx.font = font;
 				ctx.fillStyle = fontColor;
 				if (recName) {
-					ctx.fillText("扫码向“" + recName + "”付款", 450, 178);
+					if (!recNameLeft) {
+						recNameLeft = imgWidth / 2;
+					}
+					ctx.fillText("扫码向“" + recName + "”付款", recNameLeft, recNameTop);
 				}
 				// 在canvas上生成二维码
 				var canvasOld = document.getElementsByTagName('canvas')[0];
@@ -335,10 +338,6 @@ $(function () {
 				var image = new Image();
 				image.src = canvas.toDataURL("image/png");
 				$(".form-horizontal img").attr("src", image.src);
-				// $("canvas").hide();
-				// $("#endImg").show();
-				// 显示下载按钮
-				// $("#downImg").show();
 			}
 		}
 

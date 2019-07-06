@@ -104,11 +104,39 @@
         "background": "#FFFFFF",
         "imgWidth": 900,
         "imgHeight": 1200,
-        "font": "70px '黑体'",
+        "font": "60px '黑体'",
         "fontColor": "#FFFFFF",
         "recNameLeft": "",
-        "recNameTop": 178,
+        "recNameTop": 255,
         "qrLeft": 270,
         "qrTop": 320
+    },
+    "xiaohuangren": {
+        "qrWidth": "520",
+        "qrHeight": "520",
+        "foreground": "#F7D25D",
+        "background": "#FFFFFF",
+        "imgWidth": 900,
+        "imgHeight": 1200,
+        "font": "70px '黑体'",
+        "fontColor": "transparent",
+        "recNameLeft": "",
+        "recNameTop": 178,
+        "qrLeft": 183,
+        "qrTop": 98
+    },
+    "qitao": {
+        "qrWidth": "520",
+        "qrHeight": "520",
+        "foreground": "#212121",
+        "background": "transparent",
+        "imgWidth": 900,
+        "imgHeight": 1200,
+        "font": "70px '黑体'",
+        "fontColor": "transparent",
+        "recNameLeft": "",
+        "recNameTop": 178,
+        "qrLeft": 93,
+        "qrTop": 98
     }
 }
