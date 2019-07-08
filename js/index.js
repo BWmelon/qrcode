@@ -378,6 +378,7 @@ $(function () {
 					var getJson = $.ajax({
 						type: 'get',
 						url: "config.json",
+						dataType: "JSON",
 						async: true,
 						success: function () {
 							var styleName = nowName;
