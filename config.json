@@ -138,5 +138,47 @@
         "recNameTop": 178,
         "qrLeft": 93,
         "qrTop": 98
+    },
+    "baobei": {
+        "qrWidth": "500",
+        "qrHeight": "500",
+        "foreground": "#A95B5E",
+        "background": "transparent",
+        "imgWidth": 900,
+        "imgHeight": 1200,
+        "font": "70px '黑体'",
+        "fontColor": "transparent",
+        "recNameLeft": "",
+        "recNameTop": 178,
+        "qrLeft": 200,
+        "qrTop": 370
+    },
+    "toushi": {
+        "qrWidth": "400",
+        "qrHeight": "400",
+        "foreground": "#FDA3B8",
+        "background": "transparent",
+        "imgWidth": 900,
+        "imgHeight": 1200,
+        "font": "70px '黑体'",
+        "fontColor": "transparent",
+        "recNameLeft": "",
+        "recNameTop": 178,
+        "qrLeft": 408,
+        "qrTop": 605
+    },
+    "gongzhu": {
+        "qrWidth": "520",
+        "qrHeight": "520",
+        "foreground": "#F36C79",
+        "background": "transparent",
+        "imgWidth": 900,
+        "imgHeight": 1200,
+        "font": "70px '黑体'",
+        "fontColor": "transparent",
+        "recNameLeft": "",
+        "recNameTop": 178,
+        "qrLeft": 185,
+        "qrTop": 370
     }
 }
