@@ -202,103 +202,103 @@ $(function () {
 		})
 
 		// 生成收款码（经典样式 可自定义颜色）(当前版本暂时弃用)
-		function makeBg(topColor = "#5a91eb", bottomColor = "#ffffff", recTextColor = "#ffffff", bottomTextColor = "#5a91eb", recName, url) {
-			// 设置默认属性
-			recName = recName || document.getElementById("recName").value;
-			//jQuery生成二维码         
-			$('#code').qrcode({
-				render: "canvas",
-				width: 550,
-				height: 550,
-				text: url,
-				foreground: "black",
-				background: "white"
-			});
-			// 开始绘制展示页面
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext('2d');
-			// 上矩形
-			ctx.fillStyle = topColor;
-			ctx.fillRect(0, 0, 900, 1090);
-			// 下矩形
-			ctx.fillStyle = bottomColor;
-			ctx.fillRect(0, 1090, 900, 130);
-			// 二维码矩形
-			ctx.fillStyle = "#ffffff";
-			ctx.fillRect(140, 200, 600, 600);
-			// 微信
-			ctx.textAlign = "center";
-			ctx.font = "40px '黑体'";
-			ctx.fillStyle = "#ffffff";
-			ctx.fillText("微信", 226, 1052);
-			// 支付宝
-			ctx.font = "40px '黑体'";
-			ctx.fillStyle = "#ffffff";
-			ctx.fillText("支付宝", 450, 1052);
-			// QQ钱包
-			ctx.font = "40px '黑体'";
-			ctx.fillStyle = "#ffffff";
-			ctx.fillText("QQ钱包", 672, 1052);
-			// 收款名
-			ctx.font = "70px '黑体'";
-			ctx.fillStyle = recTextColor;
-			ctx.fillText("扫码向“" + recName + "”付款", 450, 120);
-			// 下文本
-			ctx.font = "80px '华文新魏'";
-			ctx.fillStyle = bottomTextColor;
-			ctx.fillText("万能收款码", 450, 1183);
+		// function makeBg(topColor = "#5a91eb", bottomColor = "#ffffff", recTextColor = "#ffffff", bottomTextColor = "#5a91eb", recName, url) {
+		// 	// 设置默认属性
+		// 	recName = recName || document.getElementById("recName").value;
+		// 	//jQuery生成二维码         
+		// 	$('#code').qrcode({
+		// 		render: "canvas",
+		// 		width: 550,
+		// 		height: 550,
+		// 		text: url,
+		// 		foreground: "black",
+		// 		background: "white"
+		// 	});
+		// 	// 开始绘制展示页面
+		// 	var canvas = document.getElementById("canvas");
+		// 	var ctx = canvas.getContext('2d');
+		// 	// 上矩形
+		// 	ctx.fillStyle = topColor;
+		// 	ctx.fillRect(0, 0, 900, 1090);
+		// 	// 下矩形
+		// 	ctx.fillStyle = bottomColor;
+		// 	ctx.fillRect(0, 1090, 900, 130);
+		// 	// 二维码矩形
+		// 	ctx.fillStyle = "#ffffff";
+		// 	ctx.fillRect(140, 200, 600, 600);
+		// 	// 微信
+		// 	ctx.textAlign = "center";
+		// 	ctx.font = "40px '黑体'";
+		// 	ctx.fillStyle = "#ffffff";
+		// 	ctx.fillText("微信", 226, 1052);
+		// 	// 支付宝
+		// 	ctx.font = "40px '黑体'";
+		// 	ctx.fillStyle = "#ffffff";
+		// 	ctx.fillText("支付宝", 450, 1052);
+		// 	// QQ钱包
+		// 	ctx.font = "40px '黑体'";
+		// 	ctx.fillStyle = "#ffffff";
+		// 	ctx.fillText("QQ钱包", 672, 1052);
+		// 	// 收款名
+		// 	ctx.font = "70px '黑体'";
+		// 	ctx.fillStyle = recTextColor;
+		// 	ctx.fillText("扫码向“" + recName + "”付款", 450, 120);
+		// 	// 下文本
+		// 	ctx.font = "80px '华文新魏'";
+		// 	ctx.fillStyle = bottomTextColor;
+		// 	ctx.fillText("万能收款码", 450, 1183);
 
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext('2d');
-			var canvasOld = document.getElementsByTagName('canvas')[0];
-			ctx.drawImage(canvasOld, 166, 224);
-
-
-			// 生成三个图标
-			new Promise((resolve, reject) => {
-				$("#endImg").show();
-				var imgWechat = new Image();
-				imgWechat.src = "imgs/icons/wechat.png";
-				imgWechat.onload = function () {
-					ctx.drawImage(imgWechat, 170, 872, 123, 123);
-					resolve();
-
-				}
-			}).then(() => {
-				return new Promise((resolve, reject) => {
-					var imgAlipay = new Image();
-					imgAlipay.src = "imgs/icons/alipay.png";
-					imgAlipay.onload = function () {
-						ctx.drawImage(imgAlipay, 390, 872, 123, 123);
-						resolve();
-					}
-				})
-			}).then(() => {
-				return new Promise((resolve, reject) => {
-					var imgQQ = new Image();
-					imgQQ.src = "imgs/icons/QQ.png";
-					imgQQ.onload = function () {
-						ctx.drawImage(imgQQ, 611, 872, 123, 123);
-						//canvas转成图片，以便移动端长按保存
-						var image = new Image();
-						image.src = canvas.toDataURL("image/png");
-						$(".form-horizontal img").attr("src", image.src);
-						$("canvas").hide();
-						$("#endImg").show();
-						// 显示下载按钮
-						$("#downImg").show();
-						// 显示颜色修改区域
-						$("#adjustColor").show();
-						resolve();
-					}
-				})
-			}).then(() => {
-				// 判断是否重复生成
-				autoBottom();
-			})
+		// 	var canvas = document.getElementById("canvas");
+		// 	var ctx = canvas.getContext('2d');
+		// 	var canvasOld = document.getElementsByTagName('canvas')[0];
+		// 	ctx.drawImage(canvasOld, 166, 224);
 
 
-		}
+		//	// 生成三个图标
+		// 	new Promise((resolve, reject) => {
+		// 		$("#endImg").show();
+		// 		var imgWechat = new Image();
+		// 		imgWechat.src = "imgs/icons/wechat.png";
+		// 		imgWechat.onload = function () {
+		// 			ctx.drawImage(imgWechat, 170, 872, 123, 123);
+		// 			resolve();
+
+		// 		}
+		// 	}).then(() => {
+		// 		return new Promise((resolve, reject) => {
+		// 			var imgAlipay = new Image();
+		// 			imgAlipay.src = "imgs/icons/alipay.png";
+		// 			imgAlipay.onload = function () {
+		// 				ctx.drawImage(imgAlipay, 390, 872, 123, 123);
+		// 				resolve();
+		// 			}
+		// 		})
+		// 	}).then(() => {
+		// 		return new Promise((resolve, reject) => {
+		// 			var imgQQ = new Image();
+		// 			imgQQ.src = "imgs/icons/QQ.png";
+		// 			imgQQ.onload = function () {
+		// 				ctx.drawImage(imgQQ, 611, 872, 123, 123);
+		// 				//canvas转成图片，以便移动端长按保存
+		// 				var image = new Image();
+		// 				image.src = canvas.toDataURL("image/png");
+		// 				$(".form-horizontal img").attr("src", image.src);
+		// 				$("canvas").hide();
+		// 				$("#endImg").show();
+		// 				// 显示下载按钮
+		// 				$("#downImg").show();
+		// 				// 显示颜色修改区域
+		// 				$("#adjustColor").show();
+		// 				resolve();
+		// 			}
+		// 		})
+		// 	}).then(() => {
+		// 		// 判断是否重复生成
+		// 		autoBottom();
+		// 	})
+
+
+		// }
 
 		// 生成收款码（其他样式 背景图已指定）
 		function makeDiyBg(element, qrWidth, qrHeight, url, foreground, background, imgUrl, imgWidth, imgHeight, font, fontColor, recName, recNameLeft, recNameTop, qrLeft, qrTop) {
@@ -372,7 +372,7 @@ $(function () {
 					var nowUrl = document.querySelector(".swiper-slide-active").style.backgroundImage.replace('url(', '').replace(')', '').replace('"', '').replace('"', '');
 
 					// 获取当前被选中样式图片名称 获取到的名称用来在配置文件中查找
-					var nowName = nowUrl.substring(12, nowUrl.indexOf(".png"));
+					var nowName = nowUrl.split("/").pop().replace(".png", "");
 
 					// 从config.json文件中读取样式配置
 					var getJson = $.ajax({
@@ -398,7 +398,7 @@ $(function () {
 							makeDiyBg("#code", qrWidth, qrHeight, res.data.urls[0].url_short, foreground, background, nowUrl, imgWidth, imgHeight, font, fontColor, document.getElementById("recName").value, recNameLeft, recNameTop, qrLeft, qrTop);
 							autoBottom();
 							//页面层-收款码
-							setTimeout(() => {
+							setTimeout(function() {
 								layer.open({
 									type: 1,
 									title: false,
@@ -436,7 +436,7 @@ $(function () {
 						var nowUrl = document.querySelector(".swiper-slide-active").style.backgroundImage.replace('url(', '').replace(')', '').replace('"', '').replace('"', '');
 
 						// 获取当前被选中样式图片名称 获取到的名称用来在配置文件中查找
-						var nowName = nowUrl.substring(12, nowUrl.indexOf(".png"));
+						var nowName = nowUrl.split("/").pop().replace(".png", "");
 
 						// 从config.json文件中读取样式配置
 						var getJson = $.ajax({
@@ -461,7 +461,7 @@ $(function () {
 								makeDiyBg("#code", qrWidth, qrHeight, longUrl, foreground, background, nowUrl, imgWidth, imgHeight, font, fontColor, document.getElementById("recName").value, recNameLeft, recNameTop, qrLeft, qrTop);
 								autoBottom();
 								//页面层-收款码
-								setTimeout(() => {
+								setTimeout(function () {
 									layer.open({
 										type: 1,
 										title: false,
