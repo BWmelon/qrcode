@@ -191,8 +191,63 @@ $(function () {
 		}
 
 		// 上传二维码并解析
-		$("#qqBtn").on('change', function () {
-			getUrl_qq(this, 'file-url');
+		$("#qqBtn").on('change', function (e) {
+			// getUrl_qq(this, 'file-url');
+			hasImage = false;
+			var imageData = null;
+			var file = e.target.files[0];
+			var canvas = $("#canvas")[0];
+			var context = canvas.getContext('2d');
+			if (file) {
+				hasImage = false;
+				imageData = null;
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img = new Image();
+					img.crossOrigin = 'anonymous';
+					img.onload = function () {
+						var width = img.width;
+						var height = img.height;
+						var actualWidth = Math.min(960, width);
+						var actualHeight = height * (actualWidth / width);
+
+						hasImage = true;
+						canvas.width = actualWidth;
+						canvas.height = actualHeight;
+
+						context.drawImage(img, 0, 0, width, height, 0, 0, actualWidth, actualHeight);
+
+						imageData = context.getImageData(0, 0, actualWidth, actualHeight);
+
+					};
+					img.src = e.target.result;
+				};
+			}
+			reader.readAsDataURL(file);
+
+			setTimeout(() => {
+				var result = new QRCode.Decoder().decode(imageData.data, imageData.width, imageData.height);
+				if (result) {
+					if (result.data.indexOf('qianbao') == '-1') {
+						layer.msg('该收款码不是QQ收款码，请上传QQ收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('qq').value = result.data;
+					}
+				} else {
+					layer.msg('二维码解析失败，请重新上传', {
+						time: 3000,
+						icon: 5
+					});
+				}
+			}, 200);
+
 		})
 		$("#wechatBtn").on('change', function () {
 			getUrl_wechat(this, 'file-url');
@@ -398,7 +453,7 @@ $(function () {
 							makeDiyBg("#code", qrWidth, qrHeight, res.data.urls[0].url_short, foreground, background, nowUrl, imgWidth, imgHeight, font, fontColor, document.getElementById("recName").value, recNameLeft, recNameTop, qrLeft, qrTop);
 							autoBottom();
 							//页面层-收款码
-							setTimeout(function() {
+							setTimeout(function () {
 								layer.open({
 									type: 1,
 									title: false,
@@ -431,7 +486,7 @@ $(function () {
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					if (jqXHR.statusText == "error") {
-						layer.closeAll();    
+						layer.closeAll();
 						// 获取当前被选中样式图片地址
 						var nowUrl = document.querySelector(".swiper-slide-active").style.backgroundImage.replace('url(', '').replace(')', '').replace('"', '').replace('"', '');
 
