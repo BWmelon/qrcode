@@ -2,8 +2,8 @@
 	"use strict";
 	
 	//获取预览图片路径
-	var getObjectURL = function(file){
-	    var url = null ; 
+	let getObjectURL = function(file){
+	    let url = null ; 
 	    if (window.createObjectURL!=undefined) { // basic
 	        url = window.createObjectURL(file) ;
 	    } else if (window.URL!=undefined) { // mozilla(firefox)
@@ -17,7 +17,7 @@
 	
 	window.analyticCode = {
 		getUrl : function(type,elem,fn){
-			var url = null,src = null;
+			let url = null,src = null;
 			
 			if(type === 'img-url'){
 				url = elem.src;
