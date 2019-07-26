@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<!-- 百度统计 -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e3fd2b8e813e2dd0ad7a24468fe468d4";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+	<meta charset="UTF-8">
+	<title>大西瓜三合一收款码</title>
+	<meta name="keywords" content="收款码合并,收款码三合一免费合并,在线合成,合成,免费合成,收款码" />
+    <meta name="description" content="qq微信支付宝收款码在线免费合并三合一" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="bookmark"href="favicon.ico" />
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<link href="//cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<!-- header开始 -->
+	<div class="">
+		<nav class="navbar navbar-inverse mainColor">
+		  <div class="container-fluid container">
+		    <div class="navbar-header header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="../">大西瓜收款码</a>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="navBar">
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="https://www.bwmelon.com/">博客</a></li>
+		        <li><a href="https://github.com/BWmelon/qrcode">Github</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Links <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="https://qr.52ecy.cn/">收款啦</a></li>
+		            <li><a href="https://qrpay.uomg.com/">优启梦收款码</a></li>
+		            <li><a href="https://www.layui.com/">Layui</a></li>
+		          </ul>
+		        </li>
+		        <li><a href="https://jq.qq.com/?_wv=1027&k=58OjqS7">有问题点我</a></li>
+		      </ul>
+
+		    </div>
+		  </div>
+		</nav>
+	</div>
+<!-- header结束 -->
+
+
+<!-- content开始 -->
+	<div class="container">
+		<form class="form-horizontal">
+
+		  <div class="form-group">
+		    <!-- <label for="recName" class="col-sm-2 control-label hidden-xs">收款名</label> -->
+		    <div class="col-sm-8 col-sm-offset-2">
+		      		<input type="text" class="form-control" id="recName" placeholder="请输入收款人名称(建议2~4个字)" autocomplete="off">
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <!-- <label for="qq" class="col-sm-2 control-label hidden-xs">QQ</label> -->
+		    <div class="col-sm-8 col-sm-offset-2">
+		    	<div class="input-group">
+		      		<input type="text" class="form-control" id="qq" placeholder="请点按钮上传QQ收款码"  autocomplete="off">
+		      		<label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            <span class="glyphicon glyphicon-upload"></span> 
+                            上传图片 <input type="file" style="display: none;" id="qqBtn" multiple>
+                        </span>
+                    </label>
+		      	</div>
+		    </div>
+		  </div>
+
+		  <div class="form-group text-center">
+		    <!-- <label for="wechat" class="col-sm-2 control-label hidden-xs">微信</label> -->
+		    <div class="col-sm-8 col-sm-offset-2">
+		    	<div class="input-group">
+		      		<input type="text" class="form-control" id="wechat" placeholder="请点按钮上传微信收款码" autocomplete="off">
+		      		<label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            <span class="glyphicon glyphicon-upload"></span> 
+                            上传图片 <input type="file" style="display: none;" id="wechatBtn" multiple>
+                        </span>
+                    </label>
+		      	</div>
+		    </div>
+		  </div>
+
+		  	<div class="form-group">
+		    	<!-- <label for="wechat" class="col-sm-2 control-label hidden-xs">支付宝</label> -->
+		    	<div class="col-sm-8 col-sm-offset-2">
+		    		<div class="input-group">
+		      			<input type="text" class="form-control" id="ali" placeholder="请点按钮上传支付宝收款码" autocomplete="off">
+		      			<label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            <span class="glyphicon glyphicon-upload"></span> 
+                            上传图片 <input type="file" style="display: none;" id="aliBtn" multiple>
+                        </span>
+                   	</label>
+		      		</div>
+		    	</div>
+		  	</div>
+
+			<div class="form-group">
+		    	<div class="col-xs-12 col-sm-2 col-sm-offset-5">
+		     		<input type="button" class="btn btn-primary btn-block" id="make" value="立即合成">
+		    	</div>
+		  	</div>
+
+			<div class="control-label col-lg-6 col-sm-offset-3" id="adjustColor">	
+				<div class="form-inline">
+					<label for="topColorBtn" class="control-label col-xs-4 col-lg-2">主体颜色</label>
+					<div class="control-label col-xs-2 col-lg-1" id="topColorBtn"></div>
+				</div>
+				<div class="form-inline">
+					<label for="recTextColorBtn" class="control-label col-xs-4 col-lg-2">收款名称</label>
+					<div class="control-label col-xs-2 col-lg-1" id="recTextColorBtn"></div>
+				</div>
+				<div class="form-inline">
+					<label for="bottomColorBtn" class="control-label col-xs-4 col-lg-2">底部颜色</label>
+					<div class="control-label col-xs-2 col-lg-1" id="bottomColorBtn"></div>
+				</div>
+				<div class="form-inline">
+					<label for="bottomTextColorBtn" class="control-label col-xs-4 col-lg-2">底部名称</label>
+					<div class="control-label col-xs-2 col-lg-1" id="bottomTextColorBtn"></div>
+				</div>
+			</div>
+
+			<div class="row col-xs-10 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-md-offset-4 col-lg-offset-4">
+				<div id="code"></div>
+				<canvas id="canvas" width="900" height="1220" style="width: 450px; height: 610px; display:none;">
+				</canvas>
+				<img class="img-responsive center-block" src="" alt="" id="endImg" />
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-5 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+		      		<input type="button" class="btn btn-primary btn-block" id="downImg" value="保存不了？点我试试">
+		    	
+		  		</div>
+			</div>
+		</form>
+	</div>
+<!-- content结束 -->
+
+<!-- footer开始 -->
+	<footer class="footer navbar-fixed-bottom mainColor">
+    	<div class="">
+    		<p class="text-center footer-text">CopyRight © 2019 | 
+    			<a href="https://www.bwmelon.com" target="_blank" class="link">大西瓜博客 </a>
+    			<a href="https://console.upyun.com/register/?invite=HJgXwr0lV"><img src="https://imgs.bwmelon.com/20190506153023.png" alt="又拍云免费CDN"  width="60px"></a>
+				<a href="http://beian.miit.gov.cn/" target="_blank"> 备案许可证号</a>
+			</p>
+
+   	 	</div>
+	</footer>
+<!-- footer结束 -->
+<script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/llqrcode.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/analyticCode.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.qrcode.min.js"></script>
+<script src="./layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
