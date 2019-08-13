@@ -218,6 +218,7 @@ $(function () {
 			canvas.height = imgHeight;
 			var ctx = canvas.getContext("2d");
 			var img = new Image();
+			img.crossOrigin = "Anonymous"
 			img.src = imgUrl;
 			img.onload = function () {
 				// 生成背景图
@@ -238,7 +239,9 @@ $(function () {
 				var canvasOld = document.getElementsByTagName('canvas')[0];
 				ctx.drawImage(canvasOld, qrLeft, qrTop);
 
+
 				var image = new Image();
+				image.crossOrigin = "Anonymous"
 				image.src = canvas.toDataURL("image/png");
 				$(".form-horizontal img").attr("src", image.src);
 			}
@@ -269,10 +272,10 @@ $(function () {
 					layer.closeAll();
 					// 获取当前被选中样式图片地址
 					var nowUrl = document.querySelector(".swiper-slide-active").style.backgroundImage.replace('url(', '').replace(')', '').replace('"', '').replace('"', '');
-
-					// 获取当前被选中样式图片名称 获取到的名称用来在配置文件中查找
-					var nowName = nowUrl.split("/").pop().replace(".png", "");
-
+					
+					// 判断index.html引用图片的方式
+					var nowName = $(".swiper-slide-active").attr("mould-name") ? $(".swiper-slide-active").attr("mould-name") : nowUrl.split("/").pop().replace(".png", "");
+					
 					// 从config.json文件中读取样式配置
 					var getJson = $.ajax({
 						type: 'get',
