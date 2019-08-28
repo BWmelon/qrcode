@@ -265,9 +265,8 @@ $(function () {
 			//由于原来生成的链接太长，生成的二维码太密集，所以通过新浪短网址(https://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI#.E7.9F.AD.E9.93.BE)生成短网址
 			$.ajax({
 				type: 'get',
-				url: '//api.weibo.com/2/short_url/shorten.json?source=2849184197&url_long=' + urlEncode(longUrl),
-				dataType: "JSONP",
-				success: function (res) {
+				url: 'long2tiny.php?&url_long=' + urlEncode(urlEncode(longUrl)),
+				success: function (res) {				
 					// 生成缩网址二维码
 					layer.closeAll();
 					// 获取当前被选中样式图片地址
@@ -297,7 +296,7 @@ $(function () {
 							var recNameTop = config[styleName].recNameTop;
 							var qrLeft = config[styleName].qrLeft;
 							var qrTop = config[styleName].qrTop;
-							makeDiyBg("#code", qrWidth, qrHeight, res.data.urls[0].url_short, foreground, background, nowUrl, imgWidth, imgHeight, font, fontColor, document.getElementById("recName").value, recNameLeft, recNameTop, qrLeft, qrTop);
+							makeDiyBg("#code", qrWidth, qrHeight, res, foreground, background, nowUrl, imgWidth, imgHeight, font, fontColor, document.getElementById("recName").value, recNameLeft, recNameTop, qrLeft, qrTop);
 							autoBottom();
 							//页面层-收款码
 							setTimeout(function () {
