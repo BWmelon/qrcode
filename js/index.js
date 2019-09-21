@@ -138,7 +138,7 @@ $(function () {
 			return encodeURIComponent(String).replace(/'/g, "%27").replace(/"/g, "%22");
 		}
 
-		// 上传二维码并解析
+		// 上传QQ二维码并解析
 		$("#qqBtn").on('change', function (e) {
 			hasImage = false;
 			var imageData = null;
@@ -196,12 +196,124 @@ $(function () {
 			}, 200);
 
 		});
-		$("#wechatBtn").on('change', function () {
-			getUrl_wechat(this, 'file-url');
-		})
-		$("#aliBtn").on('change', function () {
-			getUrl_ali(this, 'file-url');
-		})
+
+		// 上传微信二维码并解析
+		$("#wechatBtn").on('change', function (e) {
+			hasImage = false;
+			var imageData = null;
+			var file = e.target.files[0];
+			var canvas = $("#canvas")[0];
+			var context = canvas.getContext('2d');
+			if (file) {
+				hasImage = false;
+				imageData = null;
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img = new Image();
+					img.crossOrigin = 'anonymous';
+					img.onload = function () {
+						var width = img.width;
+						var height = img.height;
+						var actualWidth = Math.min(960, width);
+						var actualHeight = height * (actualWidth / width);
+
+						hasImage = true;
+						canvas.width = actualWidth;
+						canvas.height = actualHeight;
+
+						context.drawImage(img, 0, 0, width, height, 0, 0, actualWidth, actualHeight);
+
+						imageData = context.getImageData(0, 0, actualWidth, actualHeight);
+
+					};
+					img.src = e.target.result;
+				};
+			}
+			reader.readAsDataURL(file);
+
+			setTimeout(() => {
+				var result = new QRCode.Decoder().decode(imageData.data, imageData.width, imageData.height);
+				if (result) {
+					if (result.data.indexOf('wxp') == '-1') {
+						layer.msg('该收款码不是微信收款码，请上传微信收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('wechat').value = result.data;
+					}
+				} else {
+					layer.msg('二维码解析失败，请重新上传', {
+						time: 3000,
+						icon: 5
+					});
+				}
+			}, 200);
+
+		});
+
+		// 上传支付宝二维码并解析
+		$("#aliBtn").on('change', function (e) {
+			hasImage = false;
+			var imageData = null;
+			var file = e.target.files[0];
+			var canvas = $("#canvas")[0];
+			var context = canvas.getContext('2d');
+			if (file) {
+				hasImage = false;
+				imageData = null;
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var img = new Image();
+					img.crossOrigin = 'anonymous';
+					img.onload = function () {
+						var width = img.width;
+						var height = img.height;
+						var actualWidth = Math.min(960, width);
+						var actualHeight = height * (actualWidth / width);
+
+						hasImage = true;
+						canvas.width = actualWidth;
+						canvas.height = actualHeight;
+
+						context.drawImage(img, 0, 0, width, height, 0, 0, actualWidth, actualHeight);
+
+						imageData = context.getImageData(0, 0, actualWidth, actualHeight);
+
+					};
+					img.src = e.target.result;
+				};
+			}
+			reader.readAsDataURL(file);
+
+			setTimeout(() => {
+				var result = new QRCode.Decoder().decode(imageData.data, imageData.width, imageData.height);
+				if (result) {
+					if (result.data.indexOf('ALIPAY') == '-1' && result.data.indexOf('alipay') == '-1') {
+						layer.msg('该收款码不是支付宝收款码，请上传支付宝收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('ali').value = result.data;
+					}
+				} else {
+					layer.msg('二维码解析失败，请重新上传', {
+						time: 3000,
+						icon: 5
+					});
+				}
+			}, 200);
+
+		});
 
 		// 生成收款码（其他样式 背景图已指定）
 		function makeDiyBg(element, qrWidth, qrHeight, url, foreground, background, imgUrl, imgWidth, imgHeight, font, fontColor, recName, recNameLeft, recNameTop, qrLeft, qrTop) {
@@ -407,9 +519,6 @@ $(function () {
 			a.href = url;
 			a.dispatchEvent(event);
 		})
-
-
-
 	})
 
 	// 底部导航条自适应
