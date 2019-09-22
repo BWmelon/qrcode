@@ -1,0 +1,82 @@
+{
+    "pinkgirl": {
+        "materials": {
+            "eye": "./materials/pinkgirl/eye.png",
+            "row4": "./materials/pinkgirl/row4.png",
+            "row3col2": "./materials/pinkgirl/row3col2.png",
+            "row2col2": "./materials/pinkgirl/row2col2.png",
+            "corner": "./materials/pinkgirl/corner.png",
+            "col2": "./materials/pinkgirl/col2.png",
+            "single": "./materials/pinkgirl/single.png"
+        },
+        "imgWidth": 450,
+        "imgHeight": 600,
+        "qrWidth": 260,
+        "qrHeight": 260,
+        "qrTop": 70,
+        "qrLeft": 95
+    },
+    "qitao": {
+        "materials": {
+            "eye": "./materials/qitao/eye.png",
+            "single": "./materials/qitao/single.png",
+            "col4": "./materials/qitao/col4.png",
+            "col3": "./materials/qitao/col3.png",
+            "col2": "./materials/qitao/col2.png"
+        },
+        "imgWidth": 450,
+        "imgHeight": 600,
+        "qrWidth": 260,
+        "qrHeight": 260,
+        "qrTop":50,
+        "qrLeft": 40
+    },
+    "xiaohuangren": {
+        "materials": {
+            "eye": "./materials/xiaohuangren/eye.png",
+            "single": "./materials/xiaohuangren/single.png",
+            "row3": "./materials/xiaohuangren/row3.png",
+            "row2col3": "./materials/xiaohuangren/row2col3.png",
+            "row2col2": ["./materials/xiaohuangren/row2col2.png", "./materials/xiaohuangren/row2col2_2.png"],
+            "row2": ["./materials/xiaohuangren/row2.png", "./materials/xiaohuangren/row2_2.png"]
+        },
+        "imgWidth": 450,
+        "imgHeight": 600,
+        "qrWidth": 260,
+        "qrHeight": 260,
+        "qrTop": 50,
+        "qrLeft": 90
+    },
+    "qiuzanzhu": {
+        "materials": {
+            "eye": "./materials/qiuzanzhu/eye.png",
+            "single": "./materials/qiuzanzhu/single.png",
+            "row2col3": "./materials/qiuzanzhu/row2col3.png",
+            "row3col2": "./materials/qiuzanzhu/row3col2.png",
+            "row2col2": "./materials/qiuzanzhu/row2col2.png",
+            "col3": "./materials/qiuzanzhu/col3.png",
+            "col4": "./materials/qiuzanzhu/col4.png",
+            "row4": "./materials/qiuzanzhu/row4.png"
+        },
+        "imgWidth": 450,
+        "imgHeight": 600,
+        "qrWidth": 210,
+        "qrHeight": 210,
+        "qrTop": 220,
+        "qrLeft": 115
+    },
+    "longmao": {
+        "materials": {
+            "eye": "./materials/longmao/eye.png",
+            "single": "./materials/longmao/single.png",
+            "row2": ["./materials/longmao/row2.png", "./materials/longmao/row2_2.png", "./materials/longmao/row2_3.png"],
+            "row2col2": ["./materials/longmao/row2col2.png", "./materials/longmao/row2col2_2.png"]
+        },
+        "imgWidth": 450,
+        "imgHeight": 600,
+        "qrWidth": 220,
+        "qrHeight": 220,
+        "qrTop": 120,
+        "qrLeft": 115
+    }
+}

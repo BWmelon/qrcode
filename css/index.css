@@ -1,4 +1,4 @@
-#code, #canvas, #adjustColor, #endImg, #downImg {
+#code, #canvas, #adjustColor, #endImg, #downImg, #art-qrcode, #qrcode {
 	display: none;
 }
 
@@ -8,6 +8,11 @@
 }
 .mainColor {
 	background-color: rgba(100, 149, 237, 0.8);
+}
+
+div[data-art] {
+	border: 2px solid skyblue;
+	border-radius: 10px;
 }
 
 .navbar {
