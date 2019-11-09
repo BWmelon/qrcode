@@ -8,23 +8,29 @@ if ($_GET['url_long']) {
 }
 
 // 短网址api接口
-// 腾讯 http://sa.sogou.com/gettiny?url= 推荐用这个，
-// 新浪 https://api.t.sina.com.cn/short_url/shorten.json?source=2849184197&url_long=
-$api = "http://sa.sogou.com/gettiny?url=";
+// 第三方生成腾讯 2019/11/09 更新 http://dwz.fxw.la/url/url.php?
+// 腾讯 http://sa.sogou.com/gettiny?url= (已失效)
+// 新浪 https://api.t.sina.com.cn/short_url/shorten.json?source=2849184197&url_long= (已失效)
+
+$api = "http://dwz.fxw.la/url/url.php?";
 
 // 请求地址
 $url = $api . $url_long;   
 
-if ($api == "http://sa.sogou.com/gettiny?url=") {
-    $tinyurl = file_get_contents($url);
-} else if($api == "https://api.t.sina.com.cn/short_url/shorten.json?source=2849184197&url_long=") {
+// if ($api == "http://sa.sogou.com/gettiny?url=") {
+//     $tinyurl = file_get_contents($url);
+// } else if($api == "https://api.t.sina.com.cn/short_url/shorten.json?source=2849184197&url_long=") {
+//     $res = json_decode(file_get_contents($url), true);
+//     $tinyurl = str_replace("http", "https", $res[0]["url_short"]);
+// } else {
+//     $tinyurl = "Api error.";
+// }
+
+if($api == "http://dwz.fxw.la/url/url.php?") {
     $res = json_decode(file_get_contents($url), true);
-    $tinyurl = str_replace("http", "https", $res[0]["url_short"]);
-} else {
-    $tinyurl = "Api error.";
+    $tinyurl = str_replace("http", "https", $res["url_short"]);
 }
 
- echo $tinyurl;
+echo $tinyurl;
 
-;
 ?>
