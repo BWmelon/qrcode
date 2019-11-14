@@ -8,11 +8,11 @@ if ($_GET['url_long']) {
 }
 
 // 短网址api接口
-// 第三方生成腾讯 2019/11/09 更新 http://dwz.fxw.la/url/url.php?
+// 第三方(优启梦API)生成腾讯 2019/11/14 更新 https://api.uomg.com/api/long2dwz?dwzapi=urlcn&url=?
 // 腾讯 http://sa.sogou.com/gettiny?url= (已失效)
 // 新浪 https://api.t.sina.com.cn/short_url/shorten.json?source=2849184197&url_long= (已失效)
 
-$api = "http://dwz.fxw.la/url/url.php?";
+$api = "https://api.uomg.com/api/long2dwz?dwzapi=urlcn&url=";
 
 // 请求地址
 $url = $api . $url_long;   
@@ -26,9 +26,14 @@ $url = $api . $url_long;
 //     $tinyurl = "Api error.";
 // }
 
-if($api == "http://dwz.fxw.la/url/url.php?") {
+if($api == "https://api.uomg.com/api/long2dwz?dwzapi=urlcn&url=") {
     $res = json_decode(file_get_contents($url), true);
-    $tinyurl = str_replace("http", "https", $res["url_short"]);
+    if($res["code"] == 1) {
+        $tinyurl = $res["ae_url"];
+    } else {
+        $tinyurl = '二维码生成失败';    
+    }
+    
 }
 
 echo $tinyurl;
