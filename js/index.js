@@ -30,7 +30,7 @@ $(function () {
 				el: '.swiper-pagination',
 			},
 		});
-		
+
 		// 弹窗广告,不需要则删除该段代码
 		layer.open({
 			type: 1,
@@ -53,7 +53,7 @@ $(function () {
 			return encodeURIComponent(String).replace(/'/g, "%27").replace(/"/g, "%22");
 		}
 
-		// 上传QQ二维码并解析
+		// 上传QQ二维码并解析(主用解析库)
 		$("#qqBtn").on('change', function (e) {
 			hasImage = false;
 			var imageData = null;
@@ -103,16 +103,41 @@ $(function () {
 						document.getElementById('qq').value = result.data;
 					}
 				} else {
-					layer.msg('二维码解析失败，请重新上传', {
-						time: 3000,
-						icon: 5
-					});
+					getUrl_qq(this, 'file-url');
 				}
 			}, 200);
 
 		});
 
-		// 上传微信二维码并解析
+		//获取qq收款码链接(备用解析库)
+		function getUrl_qq(e, param) {
+			analyticCode.getUrl(
+				param, e,
+				function (url) {
+					if (url == 'error decoding QR Code') {
+						layer.confirm('该收款码解码失败，是否前往第三方网站获取收款码链接？', {
+							btn: ['立刻前往', '朕不想去']
+						}, function () {
+							window.open('https://jiema.wwei.cn/', '_blank').location;
+							layer.closeAll();
+						}, function () {});
+					} else if (url.indexOf('qianbao') == '-1') {
+						layer.msg('该收款码不是QQ收款码，请上传QQ收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('qq').value = url;
+					}
+				}
+			)
+		}
+
+		// 上传微信二维码并解析(主用解析库)
 		$("#wechatBtn").on('change', function (e) {
 			hasImage = false;
 			var imageData = null;
@@ -162,16 +187,40 @@ $(function () {
 						document.getElementById('wechat').value = result.data;
 					}
 				} else {
-					layer.msg('二维码解析失败，请重新上传', {
-						time: 3000,
-						icon: 5
-					});
+					getUrl_wechat(this, 'file-url');
 				}
 			}, 200);
 
 		});
+		//获取微信收款码链接(备用解析库)
+		function getUrl_wechat(e, param) {
+			analyticCode.getUrl(
+				param, e,
+				function (url) {
+					if (url == 'error decoding QR Code') {
+						layer.confirm('该收款码解码失败，是否前往第三方网站获取收款码链接？', {
+							btn: ['立刻前往', '朕不想去']
+						}, function () {
+							window.open('https://jiema.wwei.cn/', '_blank').location;
+							layer.closeAll();
+						}, function () {});
+					} else if (url.indexOf('wxp') == '-1') {
+						layer.msg('该收款码不是微信收款码，请上传微信收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('wechat').value = url;
+					}
+				}
+			)
+		}
 
-		// 上传支付宝二维码并解析
+		// 上传支付宝二维码并解析(主用解析库)
 		$("#aliBtn").on('change', function (e) {
 			hasImage = false;
 			var imageData = null;
@@ -221,15 +270,38 @@ $(function () {
 						document.getElementById('ali').value = result.data;
 					}
 				} else {
-					layer.msg('二维码解析失败，请重新上传', {
-						time: 3000,
-						icon: 5
-					});
+					getUrl_ali(this, 'file-url');
 				}
 			}, 200);
 
 		});
-
+		//获取支付宝收款码链接(备用解析库)
+		function getUrl_ali(e, param) {
+			analyticCode.getUrl(
+				param, e,
+				function (url) {
+					if (url == 'error decoding QR Code') {
+						layer.confirm('该收款码解码失败，是否前往第三方网站获取收款码链接？', {
+							btn: ['立刻前往', '朕不想去']
+						}, function () {
+							window.open('https://jiema.wwei.cn/', '_blank').location;
+							layer.closeAll();
+						}, function () {});
+					} else if (url.indexOf('ALIPAY') == '-1' && url.indexOf('alipay') == '-1') {
+						layer.msg('该收款码不是支付宝收款码，请上传支付宝收款码', {
+							time: 3000,
+							icon: 5
+						});
+					} else {
+						layer.msg('上传成功', {
+							time: 3000,
+							icon: 6
+						});
+						document.getElementById('ali').value = url;
+					}
+				}
+			)
+		}
 
 
 		/**
@@ -323,7 +395,7 @@ $(function () {
 
 					// 判断是否为艺术码
 					var dataArt = document.querySelector(".swiper-slide-active").dataset.art;
-					
+
 					if (dataArt) {
 						makeArtQrcode(dataArt, tinyurl);
 					} else {
@@ -473,5 +545,5 @@ $(function () {
 		}
 	})
 
-	
+
 });
