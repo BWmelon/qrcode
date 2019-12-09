@@ -14,8 +14,28 @@ if ($_GET['url_long']) {
 
 $api = "https://api.uomg.com/api/long2dwz?dwzapi=urlcn&url=";
 
+// 随机六位参数
+function randomkeys($length)
+{
+	$pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ';
+	for($i=0;$i<$length;$i++) 
+	{
+		$key .= $pattern{mt_rand(0,35)}; //生成随机数
+	}
+	return $key; 
+}
+
 // 请求地址
-$url = $api . $url_long;   
+//$url = $api . $url_long;
+$url = $api . $url_long . '?' .randomkeys(6) . 'rxf.js';
+// QQ的玄学拦截，调用数据/脚本资源等等不会被拦截（即使主域名已红）
+// 所以在不调用的情况下'?'不会影响加载。
+// 最不济QQ也只能拦截这个单页，不影响别的，比如他拦截了123456.js，不影响456789.js
+// 个人猜测初衷应该是为了让那些调用css/js资源的网站能够正常加载
+// 例如你调用了在线的bootstrap、jQ框架等，如果被拦截则会导致很多网站错误
+// 上述注释内容语言表述应该有很多错误，你懂我意思就好
+// 网站小透明，啥都不会，另外如果对这个拦截规则有什么专业的了解，请指教一二，QQ892923456
+// 如果有大佬用这个思路开发除了防洪，我想白嫖一份，哈哈哈哈哈
 
 // if ($api == "http://sa.sogou.com/gettiny?url=") {
 //     $tinyurl = file_get_contents($url);
