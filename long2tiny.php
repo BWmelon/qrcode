@@ -7,24 +7,19 @@ if ($_GET['url_long']) {
     return;
 }
 
-// 短网址api接口
-// 腾讯 http://shorturl.8446666.sojson.com/qq/shorturl?url= （失效）
-// 新浪 http://shorturl.8446666.sojson.com/sina/shorturl?url= 
-
-$api = "http://shorturl.8446666.sojson.com/sina/shorturl?url=";
+// 短网址文档（源于网络） https://api.gogoy.cn/doc/dwz.html
+$api = "https://api.gogoy.cn/api/dwz?type=urlcn&url=";
 
 // 请求地址
 $url = $api . $url_long;
 
-// 新浪
-if($api == "http://shorturl.8446666.sojson.com/sina/shorturl?url=") {
+if($api == "https://api.gogoy.cn/api/dwz?type=urlcn&url=") {
     $res = json_decode(file_get_contents($url), true);
-    if($res["status"] == 200) {
-        $tinyurl = str_replace("http", "https", $res["shorturl"]);
+    if($res["code"] == 0) {
+        $tinyurl = $res["data"]["short_url"];
     } else {
-        $tinyurl = 'Short URL generation failed, the reason may be that the request frequency exceeds 300 times / h, and the IP is blocked for one day.';    
+        $tinyurl = 'Short URL generation failed, the reason is: ' . $res["msg"];    
     }
-
 }
 
 echo $tinyurl;
