@@ -83,7 +83,7 @@
 
 ## 关于短网址
 
-由于腾讯短网址(url.cn)和新浪短网址(t.cn)逐渐被限制，需要在long2tiny.php文件中手动配置短网址接口，接口可以是其他短网址平台的接口或者自己搭建的平台接口（github上有很多开源的短网址生成项目，我自己使用的是https://github.com/urldl/url_Shortny），具体配置方式见long2tiny.php文件中栗子。
+由于腾讯短网址(url.cn)和新浪短网址(t.cn)逐渐被限制，需要在long2tiny.php文件中手动配置短网址接口，接口可以是其他短网址平台的接口或者自己搭建的平台接口（github上有很多开源的短网址生成项目，我自己使用的是 [https://github.com/urldl/url_Shortny](https://github.com/urldl/url_Shortny) ，具体配置方式见long2tiny.php文件中栗子。
 
 ## 演示
 **PC端：**
