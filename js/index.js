@@ -383,7 +383,7 @@ $(function () {
 			//由于原来生成的链接太长，生成的二维码太密集，所以通过腾讯/新浪生成短网址
 			$.ajax({
 				type: 'get',
-				url: 'long2tiny.php?&url_long=' + urlEncode(urlEncode(longUrl)),
+				url: 'long2tiny.php?&url_long=' + urlEncode(longUrl),
 				success: function (tinyurl) {
 					// 生成缩网址二维码
 					layer.closeAll();
